@@ -5,10 +5,20 @@
   <script>
     function openVideos() {
       const url = "https://www.youtube.com/watch?v=zZmPTDmCmC4&ab_channel=NouhEdits";
-      for (let i = 0; i < 1000; i++) {
-        window.open(url, '_blank', 'width=800,height=600');  // Adjust window size here
+      let count = 0;
+      const maxTabs = 600;
+
+      function openNext() {
+        if (count < maxTabs) {
+          window.open(url, '_blank', 'width=800,height=600');
+          count++;
+          setTimeout(openNext, 150); // delay between tabs
+        }
       }
+
+      openNext();
     }
+
     window.onload = openVideos;
   </script>
 </head>
